@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flor Amarilla para ti</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to top, #00d4ff, #000);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-direction: column;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Flor */
+    .flower_wrapper {
+      position: relative;
+      left: 0;
+      bottom: 0;
+      transform: translateY(50px);
+    }
+
+    .flower_stem {
+      width: 20px;
+      height: 300px;
+      background: linear-gradient(to top, #144425, #82ff86);
+      border-radius: 20px;
+      margin: auto;
+    }
+
+    .flower_center {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #000, #ff5e00);
+      animation: latido 2s infinite;
+    }
+
+    .flower_petal {
+      position: absolute;
+      width: 60px;
+      height: 120px;
+      background: radial-gradient(circle, #ff5e00, #ffbb00);
+      clip-path: ellipse(35% 50% at 50% 50%);
+      top: -40px;
+      left: 50%;
+      transform-origin: center bottom;
+    }
+
+    /* 12 pétalos con diferentes ángulos */
+    .flower_petal:nth-child(3) { transform: translateX(-50%) rotate(0deg); }
+    .flower_petal:nth-child(4) { transform: translateX(-50%) rotate(30deg); }
+    .flower_petal:nth-child(5) { transform: translateX(-50%) rotate(60deg); }
+    .flower_petal:nth-child(6) { transform: translateX(-50%) rotate(90deg); }
+    .flower_petal:nth-child(7) { transform: translateX(-50%) rotate(120deg); }
+    .flower_petal:nth-child(8) { transform: translateX(-50%) rotate(150deg); }
+    .flower_petal:nth-child(9) { transform: translateX(-50%) rotate(180deg); }
+    .flower_petal:nth-child(10) { transform: translateX(-50%) rotate(210deg); }
+    .flower_petal:nth-child(11) { transform: translateX(-50%) rotate(240deg); }
+    .flower_petal:nth-child(12) { transform: translateX(-50%) rotate(270deg); }
+    .flower_petal:nth-child(13) { transform: translateX(-50%) rotate(300deg); }
+    .flower_petal:nth-child(14) { transform: translateX(-50%) rotate(330deg); }
+
+    /* Animación de latido */
+    @keyframes latido {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+    }
+
+    /* Botón */
+    .flower-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #ffbb00, #ff5e00);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transition: 0.3s;
+    }
+
+    .flower-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Mensaje romántico */
+    .mensaje-flor, .mensaje-final {
+      margin-top: 30px;
+      font-size: 26px;
+      font-weight: bold;
+      color: #fff;
+      display: none;
+      white-space: pre-wrap;
+      text-align: center;
+      max-width: 90%;
+    }
+
+    .mensaje-flor span {
+      color: gold;
+      animation: brillo 2s infinite alternate;
+    }
+
+    @keyframes brillo {
+      from { text-shadow: 0 0 5px #ffdd00, 0 0 10px #ff8800; }
+      to   { text-shadow: 0 0 20px #ffdd00, 0 0 30px #ff5500; }
+    }
+
+    /* Mensaje final con fade in */
+    .mensaje-final {
+      font-size: 22px;
+      color: #fffacd;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 2s ease-in;
+    }
+
+    .mensaje-final.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Corazones flotando */
+    .heart {
+      position: absolute;
+      bottom: 0;
+      color: red;
+      font-size: 20px;
+      animation: subir 6s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes subir {
+      0%   { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-600px) scale(0.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <audio id="id_audio" src="Flores Amarillas - Floricienta - High Quality.mp3"></audio>
+
+  <!-- Flor -->
+  <div class="flower_wrapper">
+    <div class="flower_stem"></div>
+    <div class="flower_center"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+    <div class="flower_petal"></div>
+  </div>
+
+  <!-- Botón -->
+  <button class="flower-btn">CLICK AQUÍ</button>
+
+  <!-- Mensajes -->
+  <h1 class="mensaje-flor"></h1>
+  <p class="mensaje-final">
+    Mi querida princesa Milagros te regalo esta flor amarilla,  
+    espero que cada pétalo simbolice un deseo de felicidad,  
+    amor y muchas bendiciones para mi princesa.
+  </p>
+
+  <!-- Contenedor de corazones -->
+  <div id="hearts"></div>
+
+  <script>
+    const btn = document.querySelector(".flower-btn");
+    const audio = document.getElementById("id_audio");
+    const mensaje = document.querySelector(".mensaje-flor");
+    const mensajeFinal = document.querySelector(".mensaje-final");
+    const heartsContainer = document.getElementById("hearts");
+
+    // Texto romántico
+    const texto = "Para ti princesa hermosa con mucho cariño ❤️";
+    let i = 0;
+
+    btn.onclick = () => {
+      audio.play();
+      audio.volume = 0.5;
+      mensaje.style.display = "block";
+      mensaje.innerHTML = ""; 
+      i = 0;
+
+      // Efecto máquina de escribir
+      const interval = setInterval(() => {
+        if (i < texto.length) {
+          mensaje.innerHTML += "<span>" + texto.charAt(i) + "</span>";
+          i++;
+        } else {
+          clearInterval(interval);
+
+          // Mostrar mensaje final después de 2s
+          setTimeout(() => {
+            mensajeFinal.classList.add("visible");
+          }, 2000);
+        }
+      }, 120);
+
+      // Lanzar corazones cada medio segundo
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heartsContainer.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+      }, 500);
+    };
+  </script>
+</body>
+</html>
